@@ -1,0 +1,16 @@
+[package]
+name = "threat-dragon-types"
+description = "A library which provide types to serialize and deserialize Threat Dragon data (JSON)."
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/loulou123546/threat-dragon-types"
+authors = ["loulou123546 <louis.maillard@pm.me>"]
+license = "MIT"
+keywords = ["threat", "dragon", "threat-dragon", "types", "json"]
+categories = ["data-structures"]
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.108"
