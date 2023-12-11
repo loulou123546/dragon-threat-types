@@ -1,10 +1,27 @@
 use threat_dragon_types;
 use serde_json;
+use std::fs;
 
 fn read_file (file: &str) -> threat_dragon_types::ThreatModelV2 {
     let raw = std::fs::read(file).expect(&format!("Failed to read file {file}"));
     let text = std::str::from_utf8(&raw).expect(&format!("Invalid UTF-8 sequence in file {file}"));
     serde_json::from_str(text).expect(&format!("Invalid JSON parsing into model for file {file}"))
+}
+
+#[test]
+pub fn parse_empty () {
+    let v2 = read_file("tests/demo_files/EmptyModel.json");
+
+    assert_eq!(v2.version, "2.1.2".to_owned());
+    
+    let _ = fs::write("output.json", format!("{}", serde_json::to_string(&v2).expect("Error serializing")));
+}
+
+#[test]
+pub fn parse_root () {
+    let v2 = read_file("tests/demo_files/Demo_Threat_Model_V2.json");
+
+    assert_eq!(v2.version, "2.1.2".to_owned());
 }
 
 #[test]

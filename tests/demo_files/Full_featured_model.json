@@ -1,0 +1,615 @@
+{
+  "version": "2.1.2",
+  "summary": {
+    "title": "Full featured model",
+    "owner": "loulou123546",
+    "description": "This model features all possibles elements as possible",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "loulou123546"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Diagram name",
+        "diagramType": "Generic",
+        "placeholder": "New generic diagram description",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "version": "2.1.2",
+        "cells": [
+          {
+            "position": {
+              "x": 580,
+              "y": 70
+            },
+            "size": {
+              "width": 250,
+              "height": 140
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "KVM"
+              }
+            },
+            "id": "a2b74cd9-fdb4-498d-84a0-e55c7f9cdd48",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "KVM",
+              "description": "Any physical attack will lead to destroy of keys",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 260,
+              "y": 90
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Node.js script"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "4 3"
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "0e23483b-beee-4c04-9523-ba532edcccdd",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "Node.js script",
+              "description": "Running in v20.2",
+              "outOfScope": true,
+              "reasonOutOfScope": "This is some text",
+              "privilegeLevel": "run as root by crontab",
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "7020e71e-63ee-4845-b04e-f8be21aeda8d",
+                  "title": "DDOS demo",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Here is a high level STRIDE",
+                  "mitigation": "Run in a sandboxed VM without internet",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 1,
+                  "score": "8"
+                },
+                {
+                  "id": "f61a92d0-7acd-4e3e-a29a-43ab8cbc7522",
+                  "title": "Memory corrupting",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Integrity",
+                  "description": "Attacker could edit memory to modify data",
+                  "mitigation": "Should do HMAC of value stored in hard drive and opened with read-only",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 2,
+                  "score": "6"
+                },
+                {
+                  "id": "a927b9eb-e560-4dbe-ae84-161b91fe4bb0",
+                  "title": "Some attack on distributed system",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Distributed",
+                  "description": "Waiting for security team to fill it",
+                  "mitigation": "Running in sandbox could prevent this ? wainting safety team response",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 3,
+                  "score": "2"
+                },
+                {
+                  "id": "b68e7009-4a85-4d78-8516-1692c2f1cf9d",
+                  "title": "",
+                  "status": "NotApplicable",
+                  "severity": "Medium",
+                  "type": "Detectability",
+                  "description": "",
+                  "mitigation": "",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                },
+                {
+                  "id": "5d483919-1199-4bf3-92df-0c456746d2ef",
+                  "title": "Blind and low-vision people (lol)",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Accessibility",
+                  "description": "Compliancy with governement recommandations",
+                  "mitigation": "Add accessibility checking tool in CI/CD",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 5,
+                  "score": "4"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 645,
+              "y": 120
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Identity & Access Management"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "a6712fb0-c1a2-4294-aa7e-44eea7ce49e3",
+            "zIndex": 2,
+            "data": {
+              "type": "tm.Store",
+              "name": "Identity & Access Management",
+              "description": "Store key-pair for accessing instances",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "isALog": false,
+              "storesCredentials": true,
+              "isEncrypted": true,
+              "isSigned": true,
+              "hasOpenThreats": false,
+              "threats": [
+                {
+                  "id": "67a047df-0519-4475-9f0d-f401504fd02a",
+                  "title": "Single threat",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Integrity",
+                  "description": "Fake",
+                  "mitigation": "OK",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 7,
+                  "score": "2"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 233.75,
+              "y": 400
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Developer"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "a8cf5e57-accf-44cf-9f3b-253a26582bee",
+            "zIndex": 3,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Developer",
+              "description": "Want to access key",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "providesAuthentication": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTPS Request & Response",
+              "description": "Ask for a key pair",
+              "outOfScope": false,
+              "isBidirectional": true,
+              "reasonOutOfScope": "",
+              "protocol": "HTTPS",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "0b96bdbe-e7b6-404d-8bd6-0ec5d03f9928",
+            "source": {
+              "cell": "a8cf5e57-accf-44cf-9f3b-253a26582bee"
+            },
+            "target": {
+              "cell": "0e23483b-beee-4c04-9523-ba532edcccdd"
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 270
+              },
+              {
+                "x": 270,
+                "y": 210
+              }
+            ],
+            "labels": [
+              "HTTPS Request & Response"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isBidirectional": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "1d93f5eb-76ea-4ced-9d54-829ab69b7d0b",
+            "source": {
+              "cell": "0e23483b-beee-4c04-9523-ba532edcccdd"
+            },
+            "target": {
+              "x": 570,
+              "y": 80
+            },
+            "vertices": [
+              {
+                "x": 430,
+                "y": 80
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isBidirectional": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "11945022-a904-4e48-9529-cb1798b71a24",
+            "source": {
+              "x": 570,
+              "y": 200
+            },
+            "target": {
+              "cell": "0e23483b-beee-4c04-9523-ba532edcccdd"
+            },
+            "vertices": [
+              {
+                "x": 430,
+                "y": 200
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": "4 3"
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Sign key usage",
+              "description": "Create a HMAC",
+              "outOfScope": true,
+              "isBidirectional": true,
+              "reasonOutOfScope": "Reference in paper 146.3F",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "cce97556-61be-4b2c-bc5a-7aba79148c3e",
+                  "title": "Man-in-the-middle",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Confidentiality",
+                  "description": "Ensure there is no man-in-the-middle attack",
+                  "mitigation": "",
+                  "modelType": "Generic",
+                  "new": false,
+                  "number": 9,
+                  "score": "7"
+                }
+              ]
+            },
+            "id": "e6256a90-2846-445d-92d7-1e31fb5d578b",
+            "source": {
+              "x": 380,
+              "y": 440
+            },
+            "target": {
+              "x": 720,
+              "y": 230
+            },
+            "vertices": [
+              {
+                "x": 660,
+                "y": 410
+              }
+            ],
+            "labels": [
+              "Sign key usage"
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Server limit",
+              "description": "Server run in sandbox so is safe",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "id": "d0dadbfc-3992-43af-a377-346f2ce3fe99",
+            "source": {
+              "x": 150,
+              "y": 220
+            },
+            "target": {
+              "x": 910,
+              "y": 330
+            },
+            "labels": [
+              "Server limit"
+            ],
+            "vertices": [
+              {
+                "x": 400,
+                "y": 220
+              },
+              {
+                "x": 550,
+                "y": 320
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 378,
+              "y": 10
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Make a request for  a key"
+              }
+            },
+            "visible": true,
+            "shape": "td-text-block",
+            "id": "63acf4b3-8376-421f-9100-4910f87a5092",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Text",
+              "name": "Make a request for  a key",
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 416,
+              "y": 150
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Send the key ciphered"
+              }
+            },
+            "visible": true,
+            "shape": "td-text-block",
+            "id": "05df6fff-9511-46a4-a5c2-fdb368856413",
+            "zIndex": 12,
+            "data": {
+              "type": "tm.Text",
+              "name": "Send the key ciphered",
+              "hasOpenThreats": false
+            }
+          }
+        ],
+        "description": "Diagram desc",
+        "format": "td"
+      },
+      {
+        "id": 1,
+        "title": "New CIA diagram",
+        "diagramType": "CIA",
+        "placeholder": "New CIA diagram description",
+        "thumbnail": "./public/content/images/thumbnail.cia.jpg",
+        "version": "2.1.2",
+        "cells": [
+          {
+            "position": {
+              "x": 470,
+              "y": 270.0000000000002
+            },
+            "size": {
+              "width": 240,
+              "height": 170
+            },
+            "shape": "trust-boundary-box",
+            "id": "47ac7089-37d9-40aa-87b1-f09ad74a0cdc",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 325
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "8eff123d-b3f6-483c-9071-e5be160c066f",
+            "zIndex": 0,
+            "data": {
+              "type": "tm.Process",
+              "name": "Process",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "privilegeLevel": "",
+              "hasOpenThreats": false,
+              "threats": [
+                {
+                  "id": "b3fa49f2-9dc8-4099-a764-7cbfe44fab20",
+                  "title": "test",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Confidentiality",
+                  "description": "demo",
+                  "mitigation": "OK",
+                  "modelType": "CIA",
+                  "new": false,
+                  "number": 10,
+                  "score": "4"
+                }
+              ]
+            }
+          }
+        ],
+        "format": "td"
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "loulou123546",
+    "threatTop": 10
+  }
+}
