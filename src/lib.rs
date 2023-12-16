@@ -86,6 +86,95 @@ pub enum DiagramCell {
 
 
 
+//////////////////////////////
+
+pub trait GenericDiagramCell {
+    fn get_id (&self) -> String;
+    fn get_shape (&self) -> String;
+    fn is_visible (&self) -> bool;
+    fn set_visible (&mut self, visibility: bool);
+    fn get_angle (&self) -> f64;
+    fn set_angle (&mut self, angle: f64);
+}
+
+pub trait GenericCellBlock {
+    fn get_position (&self) -> diagram_cell::CellPosition;
+    fn set_position (&mut self, position: diagram_cell::CellPosition);
+    fn get_size (&self) -> diagram_cell::Cellsize;
+    fn set_size (&mut self, size: diagram_cell::Cellsize);
+}
+
+impl GenericDiagramCell for DiagramCell {
+    fn get_id (&self) -> String {
+        match self {
+            DiagramCell::Actor(a) => a.get_id(),
+            DiagramCell::Flow(a) => a.get_id(),
+            DiagramCell::Store(a) => a.get_id(),
+            DiagramCell::Process(a) => a.get_id(),
+            DiagramCell::TrustBoundaryBox(a) => a.get_id(),
+            DiagramCell::TrustBoundaryCurve(a) => a.get_id(),
+            DiagramCell::TdTextBlock(a) => a.get_id()
+        }
+    }
+    fn get_angle (&self) -> f64 {
+        match self {
+            DiagramCell::Actor(a) => a.get_angle(),
+            DiagramCell::Flow(a) => a.get_angle(),
+            DiagramCell::Store(a) => a.get_angle(),
+            DiagramCell::Process(a) => a.get_angle(),
+            DiagramCell::TrustBoundaryBox(a) => a.get_angle(),
+            DiagramCell::TrustBoundaryCurve(a) => a.get_angle(),
+            DiagramCell::TdTextBlock(a) => a.get_angle()
+        }
+    }
+    fn is_visible (&self) -> bool {
+        match self {
+            DiagramCell::Actor(a) => a.is_visible(),
+            DiagramCell::Flow(a) => a.is_visible(),
+            DiagramCell::Store(a) => a.is_visible(),
+            DiagramCell::Process(a) => a.is_visible(),
+            DiagramCell::TrustBoundaryBox(a) => a.is_visible(),
+            DiagramCell::TrustBoundaryCurve(a) => a.is_visible(),
+            DiagramCell::TdTextBlock(a) => a.is_visible()
+        }
+    }
+    fn get_shape (&self) -> String {
+        match self {
+            DiagramCell::Actor(a) => a.get_shape(),
+            DiagramCell::Flow(a) => a.get_shape(),
+            DiagramCell::Store(a) => a.get_shape(),
+            DiagramCell::Process(a) => a.get_shape(),
+            DiagramCell::TrustBoundaryBox(a) => a.get_shape(),
+            DiagramCell::TrustBoundaryCurve(a) => a.get_shape(),
+            DiagramCell::TdTextBlock(a) => a.get_shape()
+        }
+    }
+    fn set_angle (&mut self, angle: f64) {
+        match self {
+            DiagramCell::Actor(a) => a.set_angle(angle),
+            DiagramCell::Flow(a) => a.set_angle(angle),
+            DiagramCell::Store(a) => a.set_angle(angle),
+            DiagramCell::Process(a) => a.set_angle(angle),
+            DiagramCell::TrustBoundaryBox(a) => a.set_angle(angle),
+            DiagramCell::TrustBoundaryCurve(a) => a.set_angle(angle),
+            DiagramCell::TdTextBlock(a) => a.set_angle(angle),
+        };
+    }
+    fn set_visible (&mut self, visibility: bool) {
+        match self {
+            DiagramCell::Actor(a) => a.set_visible(visibility),
+            DiagramCell::Flow(a) => a.set_visible(visibility),
+            DiagramCell::Store(a) => a.set_visible(visibility),
+            DiagramCell::Process(a) => a.set_visible(visibility),
+            DiagramCell::TrustBoundaryBox(a) => a.set_visible(visibility),
+            DiagramCell::TrustBoundaryCurve(a) => a.set_visible(visibility),
+            DiagramCell::TdTextBlock(a) => a.set_visible(visibility),
+        };
+    }
+}
+
+
+
 impl Diagram {
     pub fn find_cell_id (&self, id: &str) -> Option<DiagramCell> {
         for cell in &self.cells {
@@ -105,5 +194,12 @@ impl Diagram {
         None
     }
 
-    
+    pub fn is_all_visible (&self) -> bool {
+        for cell in &self.cells {
+            if !cell.is_visible() {
+                return false;
+            }
+        }
+        true
+    }
 }

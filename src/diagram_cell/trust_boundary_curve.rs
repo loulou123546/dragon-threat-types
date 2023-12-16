@@ -66,3 +66,26 @@ pub struct CellDataTrustBoundaryCurve {
     #[serde(default)]
     pub hasOpenThreats: bool
 }
+
+
+
+///////////////////////////////////
+
+use crate::{GenericDiagramCell};
+
+impl GenericDiagramCell for DiagramCellTrustBoundaryCurve {
+    fn get_id (&self) -> String {
+        self.id.clone()
+    }
+    fn get_shape (&self) -> String {
+        String::from("actor")
+    }
+    fn is_visible (&self) -> bool {
+        true
+    }
+    fn set_visible (&mut self, visibility: bool) {}
+    fn get_angle (&self) -> f64 {
+        0.0
+    }
+    fn set_angle (&mut self, angle: f64) {}
+}
