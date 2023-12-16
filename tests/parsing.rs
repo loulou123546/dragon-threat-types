@@ -59,7 +59,7 @@ pub fn parse_diagram_info () {
 
     assert_eq!(diagram.version, Some("2.0".to_owned()));
     assert_eq!(diagram.title, Some("Main Request Data Flow".to_owned()));
-    assert_eq!(diagram.descrition, Some("Main Request Data Flow Description".to_owned()));
+    assert_eq!(diagram.description, Some("Main Request Data Flow Description".to_owned()));
     assert_eq!(diagram.thumbnail, Some("./public/content/images/thumbnail.stride.jpg".to_owned()));
     assert_eq!(diagram.diagramType, "STRIDE".to_owned());
     assert_eq!(diagram.id, Some(0));

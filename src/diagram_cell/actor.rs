@@ -1,10 +1,11 @@
 use serde::{Serialize, Deserialize};
 
-use crate::diagram_cell::{CellPosition, Cellsize, Threat};
+use crate::diagram_cell::{CellPosition, Cellsize, Threat, GenericAttrsText, GenericAttrsBorder};
 
 // Actor alias : actor
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct DiagramCellActor {
     pub position: CellPosition,
@@ -18,20 +19,15 @@ pub struct DiagramCellActor {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 pub struct CellAttrsActor {
-    pub body: CellAttrsActorBody
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[allow(non_snake_case)]
-pub struct CellAttrsActorBody {
-    pub stroke: String,
-    pub strokeWidth: f64,
-    pub strokeDasharray: Option<String>
+    pub text: Option<GenericAttrsText>,
+    pub body: GenericAttrsBorder
 }
 
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct CellDataActor {
     pub r#type: String,
@@ -48,6 +44,9 @@ pub struct CellDataActor {
     
     #[serde(default)]
     pub providesAuthentication: bool,
+    
+    #[serde(default)]
+    pub isTrustBoundary: bool,
     
     #[serde(default)]
     pub hasOpenThreats: bool,

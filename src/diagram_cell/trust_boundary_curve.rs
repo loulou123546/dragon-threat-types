@@ -1,10 +1,11 @@
 use serde::{Serialize, Deserialize};
 
-use crate::diagram_cell::{CellPosition, CellId};
+use crate::diagram_cell::{CellPosition, CellId, LabelsVariant};
 
 // TrustBoundaryCurve alias : trust-boundary-curve
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct DiagramCellTrustBoundaryCurve {
     pub source: DiagramCellTrustBoundaryCurvePosition,
@@ -12,12 +13,20 @@ pub struct DiagramCellTrustBoundaryCurve {
     pub width: f64,
     pub height: f64,
     pub connector: String,
+    
+    #[serde(default)]
+    pub labels: Vec<LabelsVariant>,
+    #[serde(default)]
+    pub vertices: Vec<CellPosition>,
+
     pub id: String,
     pub zIndex: i64,
-    pub data: CellDataTrustBoundaryCurve
+    pub data: CellDataTrustBoundaryCurve,
+    pub attrs: Option<CellAttrsTrustBoundaryCurve>
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[serde(untagged)]
 pub enum DiagramCellTrustBoundaryCurvePosition {
     CellPosition(CellPosition),
@@ -25,6 +34,24 @@ pub enum DiagramCellTrustBoundaryCurvePosition {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
+#[allow(non_snake_case)]
+pub struct CellAttrsTrustBoundaryCurve {
+    pub line: CellAttrsTrustBoundaryCurveBody
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
+#[allow(non_snake_case)]
+pub struct CellAttrsTrustBoundaryCurveBody {
+    #[serde(default)]
+    pub targetMarker: String,
+    #[serde(default)]
+    pub sourceMarker: String
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct CellDataTrustBoundaryCurve {
     pub r#type: String,

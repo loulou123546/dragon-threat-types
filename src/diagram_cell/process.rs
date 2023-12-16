@@ -1,10 +1,11 @@
 use serde::{Serialize, Deserialize};
 
-use crate::diagram_cell::{CellPosition, Cellsize, Threat};
+use crate::diagram_cell::{CellPosition, Cellsize, Threat, GenericAttrsText, GenericAttrsBorder};
 
 // Process alias : process
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct DiagramCellProcess {
     pub position: CellPosition,
@@ -18,30 +19,31 @@ pub struct DiagramCellProcess {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 pub struct CellAttrsProcess {
-    pub body: CellAttrsProcessBody
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[allow(non_snake_case)]
-pub struct CellAttrsProcessBody {
-    pub stroke: String,
-    pub strokeWidth: f64,
-    pub strokeDasharray: Option<String>
+    pub body: Option<GenericAttrsBorder>,
+    pub text: Option<GenericAttrsText>
 }
 
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct CellDataProcess {
     pub r#type: String,
     pub name: String,
+    
+    #[serde(default)]
+    pub description: String,
 
     #[serde(default)]
     pub outOfScope: bool,
 
     #[serde(default)]
     pub reasonOutOfScope: String,
+    
+    #[serde(default)]
+    pub isTrustBoundary: bool,
 
     #[serde(default)]
     pub hasOpenThreats: bool,

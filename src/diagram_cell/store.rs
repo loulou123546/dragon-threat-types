@@ -1,10 +1,11 @@
 use serde::{Serialize, Deserialize};
 
-use crate::diagram_cell::{CellPosition, Cellsize, Threat};
+use crate::diagram_cell::{CellPosition, Cellsize, Threat, GenericAttrsText, GenericAttrsBorder};
 
 // Store alias : store
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct DiagramCellStore {
     pub position: CellPosition,
@@ -18,21 +19,17 @@ pub struct DiagramCellStore {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct CellAttrsStore {
-    pub topLine: CellAttrsStoreBody,
-    pub bottomLine: CellAttrsStoreBody
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[allow(non_snake_case)]
-pub struct CellAttrsStoreBody {
-    pub strokeWidth: f64,
-    pub strokeDasharray: Option<String>
+    pub text: Option<GenericAttrsText>,
+    pub topLine: GenericAttrsBorder,
+    pub bottomLine: GenericAttrsBorder
 }
 
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct CellDataStore {
     pub r#type: String,
@@ -58,6 +55,9 @@ pub struct CellDataStore {
     
     #[serde(default)]
     pub isSigned: bool,
+    
+    #[serde(default)]
+    pub isTrustBoundary: bool,
     
     #[serde(default)]
     pub hasOpenThreats: bool,

@@ -10,6 +10,7 @@ pub use diagram_cell::trust_boundary_curve::DiagramCellTrustBoundaryCurve;
 pub use diagram_cell::trust_boundary_box::DiagramCellTrustBoundaryBox;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 pub struct ThreatModelV2 {
     pub summary: Summary,
     pub detail: Detail,
@@ -17,6 +18,7 @@ pub struct ThreatModelV2 {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 pub struct Summary {
     pub title: Option<String>,
     pub owner: Option<String>,
@@ -25,6 +27,7 @@ pub struct Summary {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct Detail {
     pub contributors: Option<Vec<Contributor>>,
@@ -35,17 +38,20 @@ pub struct Detail {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 pub struct Contributor {
     pub name: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
 #[allow(non_snake_case)]
 pub struct Diagram {
     pub cells: Vec<DiagramCell>,
     pub version: Option<String>,
     pub title: Option<String>,
-    pub descrition: Option<String>,
+    #[serde(alias = "descrition")]
+    pub description: Option<String>,
     pub placeholder: Option<String>,
     pub thumbnail: Option<String>,
     pub diagramType: String,
@@ -99,18 +105,5 @@ impl Diagram {
         None
     }
 
-    pub fn filter_by_type (&self, kind: &DiagramCell) -> Vec<DiagramCell> {
-        let mut filtered_cell = vec![];
-
-        for cell in &self.cells {
-            let keep = match cell {
-                kind => true,
-                _ => false,
-            };
-            if keep {
-                filtered_cell.push(cell.clone());
-            }
-        }
-        filtered_cell
-    }
+    
 }
